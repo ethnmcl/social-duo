@@ -1,10 +1,14 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
 name = "social-duo"
 version = "0.1.0"
 description = "Two-agent CLI for social media posts and replies"
 readme = "README.md"
 requires-python = ">=3.11"
-license = {text = "MIT"}
+license = "MIT"
 authors = [{name = "Your Name"}]
 
 dependencies = [
@@ -22,6 +26,10 @@ dev = [
 
 [project.scripts]
 social_duo = "social_duo.main:app"
+
+[tool.setuptools.packages.find]
+include = ["social_duo*"]
+exclude = ["tests*", "npm*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
