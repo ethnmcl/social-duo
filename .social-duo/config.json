@@ -1,0 +1,75 @@
+{
+  "brand_voice": {
+    "tone": "confident",
+    "do": [
+      "Be concise",
+      "Be specific"
+    ],
+    "dont": [
+      "Avoid hype",
+      "Avoid unverifiable claims"
+    ],
+    "vocabulary": [],
+    "banned_phrases": [],
+    "emoji_policy": {
+      "allowed": true,
+      "max_per_post": 6
+    },
+    "hashtag_policy": {
+      "allowed": true,
+      "min": 0,
+      "max": 5
+    },
+    "claims_policy": {
+      "no_unverified_claims": true
+    }
+  },
+  "platform_constraints": {
+    "x": {
+      "name": "x",
+      "char_limit": 280,
+      "typical_min": 80,
+      "typical_max": 260,
+      "hashtag_max": 2,
+      "hook_chars": 80,
+      "allow_emojis": true,
+      "threadable": true
+    },
+    "linkedin": {
+      "name": "linkedin",
+      "char_limit": 3000,
+      "typical_min": 800,
+      "typical_max": 1500,
+      "hashtag_max": 3,
+      "hook_chars": 120,
+      "allow_emojis": true,
+      "threadable": false
+    },
+    "instagram": {
+      "name": "instagram",
+      "char_limit": 2200,
+      "typical_min": 150,
+      "typical_max": 400,
+      "hashtag_max": 8,
+      "hook_chars": 100,
+      "allow_emojis": true,
+      "threadable": false
+    },
+    "threads": {
+      "name": "threads",
+      "char_limit": 500,
+      "typical_min": 100,
+      "typical_max": 400,
+      "hashtag_max": 3,
+      "hook_chars": 80,
+      "allow_emojis": true,
+      "threadable": true
+    }
+  },
+  "defaults": {
+    "platform": "x",
+    "rounds": 2,
+    "tone": "confident",
+    "length": "short"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "social-duo",
+  "version": "0.1.0",
+  "description": "MyVillage Network - Python CLI wrapper",
+  "bin": {
+    "social-duo": "npm/run.js"
+  },
+  "scripts": {
+    "postinstall": "node npm/install.js"
+  },
+  "files": [
+    "npm/**"
+  ],
+  "license": "MIT"
+}
