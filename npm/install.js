@@ -7,6 +7,7 @@ const REPO_URL = "https://github.com/ethnmcl/social-duo.git";
 const HOME = os.homedir();
 const BASE_DIR = path.join(HOME, ".social-duo");
 const VENV_DIR = path.join(BASE_DIR, "venv");
+const PKG_ROOT = path.resolve(__dirname, "..");
 
 function ensureDir(p) {
   if (!fs.existsSync(p)) {
@@ -37,20 +38,20 @@ function main() {
   const binDir = venvBin();
   const pip = process.platform === "win32" ? path.join(binDir, "pip.exe") : path.join(binDir, "pip");
 
-  // Install/upgrade from GitHub repo.
-  const installTarget = `git+${REPO_URL}`;
-  const installTargetWithSubdir = `git+${REPO_URL}#subdirectory=social-duo`;
+  // Prefer installing from the npm package contents so install does not depend on GitHub state.
+  const installTarget = PKG_ROOT;
+  const installTargetWithSubdir = `git+${REPO_URL}`;
   try {
     run(pip, ["install", "--upgrade", installTarget]);
   } catch (err) {
-    // Backward-compatible fallback if project metadata lives in a subdirectory.
+    // Fallback to GitHub for older package layouts.
     try {
       run(pip, ["install", "--upgrade", installTargetWithSubdir]);
     } catch (fallbackErr) {
       console.error("[social-duo] Python install failed.");
-      console.error(`[social-duo] Attempted: pip install --upgrade ${installTarget}`);
+      console.error(`[social-duo] Attempted local install: pip install --upgrade ${installTarget}`);
       console.error(`[social-duo] Fallback attempted: pip install --upgrade ${installTargetWithSubdir}`);
-      console.error("[social-duo] Ensure python3, pip, and git are installed, then retry npm install.");
+      console.error("[social-duo] Ensure python3 and pip are installed, then retry npm install.");
       process.exit(1);
     }
   }

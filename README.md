@@ -108,11 +108,23 @@ social_duo chat --session 3
 
 ## NPM Wrapper
 
-If you want an npm package that installs the Python CLI from GitHub:
+If you want to run the Python CLI through npm:
 
 ```bash
 npm i -g social-duo
 social-duo --help
 ```
 
-This uses the GitHub repo as the install source and creates a venv under `~/.social-duo/venv`.
+For local project usage:
+
+```bash
+npm i social-duo
+npx social-duo init
+npx social-duo molt run --turns 8
+```
+
+Environment variables are read from:
+- current directory `.env` (preferred)
+- `~/.social-duo/.env` (fallback)
+
+The npm package creates a Python venv under `~/.social-duo/venv`.
