@@ -1,4 +1,4 @@
-const { execFileSync } = require("child_process");
+const { execFileSync, spawnSync } = require("child_process");
 const fs = require("fs");
 const os = require("os");
 const path = require("path");
@@ -15,7 +15,14 @@ function ensureDir(p) {
 }
 
 function getPython() {
-  return process.platform === "win32" ? "python" : "python3";
+  const candidates = process.platform === "win32" ? ["python"] : ["python3", "python"];
+  for (const cmd of candidates) {
+    const probe = spawnSync(cmd, ["--version"], { stdio: "ignore" });
+    if (probe.status === 0) return cmd;
+  }
+  console.error("Python is required but was not found in PATH.");
+  console.error("Install Python 3.11+ and rerun: npm i -g social-duo");
+  process.exit(1);
 }
 
 function venvBin() {

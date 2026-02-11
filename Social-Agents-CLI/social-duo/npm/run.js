@@ -18,7 +18,7 @@ function main() {
   const cli = path.join(binDir, exe);
 
   if (!fs.existsSync(cli)) {
-    console.error("social-duo is not installed. Try reinstalling the npm package.");
+    console.error("social-duo backend is missing. Reinstall with: npm i -g social-duo");
     process.exit(1);
   }
 

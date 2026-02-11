@@ -9,7 +9,24 @@ A production-quality Python CLI where two AI agents collaborate to draft, critiq
 - SQLite history with export
 - JSON and rich CLI output
 
-## Install
+## Install (NPM-first)
+
+Global install (recommended for day-to-day CLI use):
+
+```bash
+npm i -g social-duo
+```
+
+Then run either command name:
+
+```bash
+social-duo --help
+social_duo --help
+```
+
+No virtualenv activation is required in each new terminal. The wrapper manages a Python venv at `~/.social-duo/venv`.
+
+## Install (Python dev)
 
 ```bash
 cd social-duo
@@ -37,7 +54,7 @@ export OPENAI_MODEL=gpt-4o-mini
 Initialize the workspace:
 
 ```bash
-social_duo init
+social-duo init
 ```
 
 ## Examples
@@ -45,54 +62,56 @@ social_duo init
 LinkedIn post about agentic workflows:
 
 ```bash
-social_duo post --platform linkedin --goal educate --topic "agentic workflows" --audience "engineering leaders" --tone "confident" --length medium
+social-duo post --platform linkedin --goal educate --topic "agentic workflows" --audience "engineering leaders" --tone "confident" --length medium
 ```
 
 X thread of 5 tweets about vector databases for semantic search:
 
 ```bash
-social_duo post --platform x --thread 5 --goal educate --topic "vector databases for semantic search" --audience "ML engineers" --tone technical --length short
+social-duo post --platform x --thread 5 --goal educate --topic "vector databases for semantic search" --audience "ML engineers" --tone technical --length short
 ```
 
 Replies to a critical comment (polite + direct):
 
 ```bash
-social_duo reply --text "This feels like vaporware." --platform x --style polite --stance neutral
-social_duo reply --text "This feels like vaporware." --platform x --style direct --stance disagree
+social-duo reply --text "This feels like vaporware." --platform x --style polite --stance neutral
+social-duo reply --text "This feels like vaporware." --platform x --style direct --stance disagree
 ```
 
 Autonomous discuss mode (no topic provided):
 
 ```bash
-social_duo discuss --platform x --turns 10 --verbose
+social-duo discuss --platform x --turns 10 --verbose
 ```
 
 MOLTBOOK-LITE simulation:
 
 ```bash
-social_duo molt run --turns 25
-social_duo molt watch --run-id <id>
-social_duo molt export --run-id <id> --format md
+social-duo molt run --turns 25
+social-duo molt watch --run-id <id>
+social-duo molt export --run-id <id> --format md
 ```
 
 Resume session via history and chat:
 
 ```bash
-social_duo history --list
-social_duo history --show 3
-social_duo chat --session 3
+social-duo history --list
+social-duo history --show 3
+social-duo chat --session 3
 ```
 
 ## Commands
 
-- `social_duo init`
-- `social_duo post`
-- `social_duo reply`
-- `social_duo discuss`
-- `social_duo molt`
-- `social_duo chat`
-- `social_duo history`
-- `social_duo config`
+- `social-duo init`
+- `social-duo post`
+- `social-duo reply`
+- `social-duo discuss`
+- `social-duo molt`
+- `social-duo chat`
+- `social-duo history`
+- `social-duo config`
+
+`social_duo` is also available as an alias when installed through npm.
 
 ## Troubleshooting
 
@@ -108,7 +127,7 @@ social_duo chat --session 3
 
 ## NPM Wrapper
 
-If you want an npm package that installs the Python CLI from GitHub:
+The npm package installs the Python CLI from GitHub:
 
 ```bash
 npm i -g social-duo
